@@ -67,4 +67,4 @@ _Add screenshots of major pages here for a better demo._
 
 ---
 
-Built with 💙 by [Your Name]
+Built with 💙 by Nitin kumar
