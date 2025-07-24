@@ -12,7 +12,6 @@ const NavBar = () => {
           <Link to="/" className="hover:underline">Home</Link>
           <Link to="/add-item" className="hover:underline">Add Item</Link>
           <Link to="/my-requests" className="hover:underline">My Requests</Link>
-          <Link to="/map" className="hover:underline">Map</Link>
           <Link to="/profile" className="hover:underline">Profile</Link>
         </div>
       </div>

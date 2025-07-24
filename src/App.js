@@ -14,7 +14,7 @@ function App() {
       <NavBar />
 			<Routes>
 				<Route path="/" element={<Home />} />
-				<Route path="/items/:id" element={<ItemDetails />} />
+				<Route path="/item/:id" element={<ItemDetails />} />
 				<Route path="/add-item" element={<AddItem />} />
 				<Route path="/my-requests" element={<MyRequests />} />
 				<Route path="/profile" element={<UserProfile />} />

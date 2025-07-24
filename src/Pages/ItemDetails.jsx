@@ -1,5 +1,6 @@
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { useItemContext } from '../context/mockItems';
 
 const mockItems = [
   {
@@ -31,8 +32,9 @@ const mockItems = [
 function ItemDetails() {
   const { id } = useParams();
   const navigate = useNavigate();
+  const { items } = useItemContext();
 
-  const item = mockItems.find(i => i.id === id);
+  const item = items.find(i => i.id === id);
 
   if (!item) {
     return (

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useItemContext } from '../context/mockItems';
 
 function AddItem() {
   const [formData, setFormData] = useState({
@@ -10,6 +11,7 @@ function AddItem() {
   });
 
   const [message, setMessage] = useState(null);
+  const { addItem } = useItemContext();
 
   const handleChange = (e) => {
     setFormData(prev => ({
@@ -32,6 +34,15 @@ function AddItem() {
     });
 
     if (isSuccess) {
+      const newItem = {
+        ...formData,
+        id: Date.now().toString(),
+        owner: "You", // or replace with user context if available
+        available: true,
+        borrowedBy: null,
+        sold: false,
+      };
+      addItem(newItem);
       setFormData({
         name: '',
         description: '',
@@ -74,14 +85,17 @@ function AddItem() {
           <option value="Fitness">Fitness</option>
           <option value="Games">Games</option>
         </select>
-        <input
-          type="text"
+        <select
           name="condition"
-          placeholder="Condition (e.g., Good, Excellent)"
           value={formData.condition}
           onChange={handleChange}
           className="w-full p-2 border rounded"
-        />
+        >
+          <option value="">Select Condition</option>
+          <option value="Good">Good</option>
+          <option value="Fair">Fair</option>
+          <option value="Excellent">Excellent</option>
+        </select>
         <input
           type="text"
           name="image"
