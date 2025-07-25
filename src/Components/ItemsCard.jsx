@@ -1,7 +1,8 @@
 import React from "react";
 import { useItemContext } from '../context/mockItems';
+import { Eye } from "lucide-react";
 
-const ItemsCard = ({ item, onViewDetails, onMarkSold }) => {
+const ItemsCard = ({ item, onViewDetails }) => {
 	const { markItemAsSold } = useItemContext();
 
 	return (
@@ -19,14 +20,14 @@ const ItemsCard = ({ item, onViewDetails, onMarkSold }) => {
 					item.available ? "text-green-600" : "text-red-500"
 				}`}
 			>
-				{item.available ? "Available" : "Sold"}
+				{item.available ?  "Available" : "Sold"}
 			</p>
 			<div className="mt-3 flex items-start flex-col gap-2">
 				<button
 					onClick={() => onViewDetails(item.id)}
-					className="text-sm text-blue-600 hover:underline"
+					className="text-sm flex gap-2 items-center text-blue-600 hover:underline"
 				>
-					View Details
+					<Eye /> View Details
 				</button>
 				{item.available && !item.sold ? (
 					<button

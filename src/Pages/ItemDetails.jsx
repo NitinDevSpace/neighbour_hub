@@ -1,33 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useItemContext } from '../context/mockItems';
-
-const mockItems = [
-  {
-    id: 'itm001',
-    name: 'Cordless Drill',
-    description: '18V cordless drill, lightly used.',
-    category: 'Tools',
-    owner: 'Alice Johnson',
-    condition: 'Good',
-    available: true,
-    image: 'https://example.com/images/drill.jpg',
-    borrowedBy: null,
-    sold: false,
-  },
-  {
-    id: 'itm003',
-    name: 'Crock Pot',
-    description: 'Large 6-quart slow cooker, works great.',
-    category: 'Kitchen',
-    owner: 'Samantha Green',
-    condition: 'Very Good',
-    available: false,
-    image: 'https://example.com/images/crockpot.jpg',
-    borrowedBy: 'Prachi Patel',
-    sold: false,
-  }
-];
 
 function ItemDetails() {
   const { id } = useParams();
@@ -35,6 +8,7 @@ function ItemDetails() {
   const { items } = useItemContext();
 
   const item = items.find(i => i.id === id);
+  const [requested, setRequested] = useState(false);
 
   if (!item) {
     return (
@@ -55,8 +29,12 @@ function ItemDetails() {
       <p className="text-gray-700 mb-4"><span className="font-semibold">Condition:</span> {item.condition}</p>
 
       {item.available && !item.sold ? (
-        <button className="bg-green-600 text-white px-5 py-2 rounded hover:bg-green-700">
-          Request to Borrow
+        <button
+          className={`px-5 py-2 rounded text-white ${requested ? 'bg-gray-500' : 'bg-green-600 hover:bg-green-700'}`}
+          onClick={() => setRequested(true)}
+          disabled={requested}
+        >
+          {requested ? 'Request Sent' : 'Request to Borrow'}
         </button>
       ) : (
         <p className="text-red-500 font-semibold">

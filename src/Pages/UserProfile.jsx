@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useItemContext } from '../context/mockItems';
 
 const mockUser = {
   name: 'Alice Johnson',
@@ -11,6 +12,11 @@ const mockUser = {
 function UserProfile() {
   const [user, setUser] = useState(mockUser);
   const [isEditing, setIsEditing] = useState(false);
+
+  const { items } = useItemContext();
+
+  const lentItems = items.filter(item => item.owner === user.name);
+  const borrowedItems = items.filter(item => item.borrowedBy === user.name);
 
   const handleChange = (e) => {
     setUser(prev => ({
@@ -66,6 +72,32 @@ function UserProfile() {
         >
           {isEditing ? 'Save Changes' : 'Edit Profile'}
         </button>
+      </div>
+
+      <div className="bg-white border p-4 rounded shadow mt-6">
+        <h2 className="text-xl font-semibold mb-2">Items You've Lent</h2>
+        {lentItems.length > 0 ? (
+          <ul className="list-disc list-inside space-y-1">
+            {lentItems.map(item => (
+              <li key={item.id}>{item.name}</li>
+            ))}
+          </ul>
+        ) : (
+          <p className="text-gray-500">You haven't lent any items yet.</p>
+        )}
+      </div>
+
+      <div className="bg-white border p-4 rounded shadow mt-6">
+        <h2 className="text-xl font-semibold mb-2">Items You've Borrowed</h2>
+        {borrowedItems.length > 0 ? (
+          <ul className="list-disc list-inside space-y-1">
+            {borrowedItems.map(item => (
+              <li key={item.id}>{item.name}</li>
+            ))}
+          </ul>
+        ) : (
+          <p className="text-gray-500">You haven't borrowed any items yet.</p>
+        )}
       </div>
     </div>
   );

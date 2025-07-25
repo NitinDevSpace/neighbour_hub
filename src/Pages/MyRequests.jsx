@@ -20,14 +20,17 @@ const mockRequests = [
 
 function MyRequests() {
   const [requests, setRequests] = useState(mockRequests);
+  const [message, setMessage] = useState(null);
 
   const handleCancel = (id) => {
     setRequests(prev => prev.map(req => req.id === id ? { ...req, status: 'Cancelled' } : req));
+    setMessage("Request has been cancelled.");
   };
 
   return (
     <div className="max-w-3xl mx-auto p-6">
       <h1 className="text-2xl font-bold mb-6">My Borrow Requests</h1>
+      {message && <div className="mb-4 text-green-600 font-medium">{message}</div>}
       {requests.length === 0 ? (
         <p className="text-gray-600">You have not requested any items yet.</p>
       ) : (

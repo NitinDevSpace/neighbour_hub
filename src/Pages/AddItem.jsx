@@ -37,7 +37,7 @@ function AddItem() {
       const newItem = {
         ...formData,
         id: Date.now().toString(),
-        owner: "You", // or replace with user context if available
+        owner: "You", // replace with user context 
         available: true,
         borrowedBy: null,
         sold: false,

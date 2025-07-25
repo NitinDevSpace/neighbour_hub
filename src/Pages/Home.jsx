@@ -8,7 +8,7 @@ function Home() {
 	const [search, setSearch] = useState("");
 	const [sortBy, setSortBy] = useState("name");
 	const [currentPage, setCurrentPage] = useState(1);
-	const ITEMS_PER_PAGE = 10;
+	const ITEMS_PER_PAGE = 9;
 	const navigate = useNavigate();
 	const { items } = useItemContext();
 
