@@ -32,7 +32,7 @@ neighbour_hub/
 
 1. Clone the repository:
    ```bash
-   git clone <your-repo-url>
+   git clone <repo-url>
    cd neighbour_hub
    ```
 
@@ -54,16 +54,6 @@ Visit `http://localhost:3000` to see the app in action.
 - **Tailwind CSS**
 - **React Router**
 - **React Context API**
-
-## 📝 Notes
-
-- The map page is intentionally skipped.
-- All data is mock data and managed on the client side.
-- You can easily extend this with Firebase or another backend for persistence.
-
-## 📸 Screenshots
-
-_Add screenshots of major pages here for a better demo._
 
 ---
 
